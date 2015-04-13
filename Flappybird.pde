@@ -7,7 +7,7 @@ class Flappybird
   Flappybird()
   {
 
-    v = 4;
+    v = 2;
     x = random(50, width-50);
     y = -50;
     costume = 1;
@@ -24,11 +24,12 @@ class Flappybird
 
   void move()
   {
-    //y++;
+    
     if (frameCount%50+(int)random(-5,5)==0 && y>0) {
      Bullet b = new Bullet(x, y, -10, false);
      bulletmanager.addB(b);
      }
+     y+=v;
   }
 }
 
