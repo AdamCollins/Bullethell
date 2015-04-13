@@ -24,8 +24,9 @@ class BulletManager
       for (int j = enemymanager.flappybird.size ()-1; j>=0; j--) {
         Flappybird f = enemymanager.flappybird.get(j);
         if (rectRect((int)b.x, (int)b.y, 3, 11, (int)f.x, (int) f.y, 32, 24) && b.isFriendly) {
-          enemymanager.flappybird.remove(j);
           explosionmanager.create(f.x,f.y);
+          enemymanager.flappybird.remove(j);
+          
           score+=100;
           bullets.remove(i);
         }

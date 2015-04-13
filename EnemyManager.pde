@@ -15,7 +15,7 @@ class EnemyManager
 
   void create()
   {
-    if (frameCount%40==0 && frameCount <60*30) {
+    if (frameCount%20==0 /*&&frameCount <60*30*/) {
       Flappybird f = new Flappybird();
       flappybird.add(f);
     }

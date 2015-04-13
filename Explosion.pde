@@ -11,7 +11,6 @@ class Explosion
 
   void display() {
     image(explosionmanager.explosionImg[costume],x,y);
-    println(x);
     costume++;
     
   }
