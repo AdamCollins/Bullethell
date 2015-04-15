@@ -32,7 +32,7 @@ class Bullet
   void move()
   {
     if (isFriendly) {
-      image(bulletmanager.bullet[costume], x, y);
+      image(bulletmanager.bullet, x, y);
       costume = (costume+1) % 2;
     } else {
       image(bulletmanager.enemyBullet, x, y);

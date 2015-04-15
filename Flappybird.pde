@@ -3,11 +3,10 @@ class Flappybird
 
   int costume;
   float x, y;
-  float v;
+  float vx, vy;
   Flappybird()
   {
 
-    v = 2;
     x = random(50, width-50);
     y = -50;
     costume = 1;
@@ -19,17 +18,28 @@ class Flappybird
 
     if (frameCount%10==0)costume++;
     if (costume>1) costume = 0;
-    y+=v;
   }
 
-  void move()
-  {
-    
-    if (frameCount%50+(int)random(-5,5)==0 && y>0) {
-     Bullet b = new Bullet(x, y, -10, false);
-     bulletmanager.addB(b);
-     }
-     y+=v;
+
+  void move() {
+    vx = (player.x-x)/40;
+    vy = (player.y-y)/40;
+    println(touching());
+    //if (!touching()) {
+      y+=vy;
+      x+=vx;
+    //}
+  }
+
+  boolean touching() {
+    for (int i = 0; i<enemymanager.flappybird.size (); i++) {
+      Flappybird f = enemymanager.flappybird.get(i);
+      if (dist(x, y, f.x, f.y)<40){
+        return true;
+        
+      }
+    }
+    return false;
   }
 }
 

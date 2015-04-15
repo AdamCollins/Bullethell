@@ -15,16 +15,16 @@ class UI
 
     textSize(14);
     textFont(font14);
-    image(bulletmanager.bullet[0], 8, 12);    //Display singlebullet count;
+    image(bulletmanager.bullet, 8, 12);    //Display singlebullet count;
     text(sBCount, 15, 15);
 
-    image(bulletmanager.bullet[0], 8, 30);
-    image(bulletmanager.bullet[0], 12, 30);
+    image(bulletmanager.bullet, 8, 30);
+    image(bulletmanager.bullet, 12, 30);
     text( "∞", 15, 30);
 
-    image(bulletmanager.bullet[0], 8, 45);
-    image(bulletmanager.bullet[0], 12, 45);
-    image(bulletmanager.bullet[0], 16, 45);
+    image(bulletmanager.bullet, 8, 45);
+    image(bulletmanager.bullet, 12, 45);
+    image(bulletmanager.bullet, 16, 45);
     text(rnbBCount, 20, 45);
 
     textFont(font36);

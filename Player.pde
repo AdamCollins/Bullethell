@@ -86,7 +86,6 @@ class Player
       for (int i = 180; i<360; i+=10) {
         Bullet b = new Bullet(x, y, i, 10, true);
         bulletmanager.addB(b);
-        println(b.isFriendly);
         
       }
       ui.rnbBCount--;
