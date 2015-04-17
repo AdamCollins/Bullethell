@@ -23,23 +23,10 @@ class Flappybird
 
   void move() {
     vx = (player.x-x)/40;
-    vy = (player.y-y)/40;
-    println(touching());
-    //if (!touching()) {
+    vy = (player.y-30-y)/40;
       y+=vy;
       x+=vx;
-    //}
   }
 
-  boolean touching() {
-    for (int i = 0; i<enemymanager.flappybird.size (); i++) {
-      Flappybird f = enemymanager.flappybird.get(i);
-      if (dist(x, y, f.x, f.y)<40){
-        return true;
-        
-      }
-    }
-    return false;
-  }
 }
 
