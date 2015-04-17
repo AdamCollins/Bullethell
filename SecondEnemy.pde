@@ -7,6 +7,7 @@ class SecondEnemy
   SecondEnemy() {
     x = random(50, width-50);
     y = -50;
+    v =2;
   }
 
   void move()
@@ -22,7 +23,7 @@ class SecondEnemy
   {
       
     fill(250, 50, 12);
-    rect(x, y, 25, 25);
+    image(enemymanager.enemyss, x,y);
   }
 }
 

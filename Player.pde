@@ -4,11 +4,13 @@ class Player
   float x, y, vx, vy, a;
   PImage[] spaceship;
   int costume;
-
+  boolean damageable;
+  int safeTimer;
   Player() {
     kbd = new Keyboard();
-    spaceship = new PImage[11];
-    for (int i = 0; i<11; i++) {
+    damageable = true;
+    spaceship = new PImage[12];
+    for (int i = 0; i<12; i++) {
       String filename = "spaceship/spaceship_" + nf(i+1, 2) + ".png";
       spaceship[i] = loadImage(filename);
     }
@@ -22,16 +24,22 @@ class Player
 
   void update()
   {
-    image(spaceship[costume-1], x, y);
-
-
-    
+      image(spaceship[costume-1], x, y);
 
     x+=vx;
     y+=vy;
 
     vx*=0.96;
     vy*=0.96;
+
+    if (!damageable) {
+      safeTimer++;
+      if(safeTimer%5==0)image(spaceship[11],x,y);
+      if (safeTimer>60*2) {
+        safeTimer = 0;
+        damageable = true;
+      }
+    }
   }
 
   void controls() {
@@ -86,7 +94,6 @@ class Player
       for (int i = 180; i<360; i+=10) {
         Bullet b = new Bullet(x, y, i, 10, true);
         bulletmanager.addB(b);
-        
       }
       ui.rnbBCount--;
     }

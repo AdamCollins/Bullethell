@@ -35,7 +35,7 @@ class UI
     for (int i = 0; i<lives; i++) {
       pushMatrix();
       scale(0.8, 0.8);
-      image(player.spaceship[5], 30+i*40, height-100);
+      image(player.spaceship[11], 30+i*40, height-100);
       popMatrix();
     }
   }

@@ -13,6 +13,7 @@ void setup()
 {
   //size(displayWidth, displayHeight,P2D);
   size(800, 600, P2D);
+  lives = 3;
   font36 = loadFont("font36.vlw");
   font14 = loadFont("font14.vlw");
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
@@ -30,7 +31,6 @@ void draw()
 {
   smooth(8);
   imageMode(CENTER);
-  
   //background(0);
 
   //starF.lightSpeed();
@@ -42,6 +42,8 @@ void draw()
   enemymanager.draw();
   explosionmanager.display();
   ui.display();
+  
+  if(lives<0) noLoop();
 }
 
 void keyPressed(KeyEvent evt) {
