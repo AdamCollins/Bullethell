@@ -29,5 +29,12 @@ class ExplosionManager
       e.display();
     }
   }
+
+  void delete() {
+    for (int i = 0; i<explosions.size (); i++) {
+      Explosion e = explosions.get(i);
+      explosions.remove(e);
+    }
+  }
 }
 

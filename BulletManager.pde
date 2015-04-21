@@ -60,5 +60,13 @@ class BulletManager
   {
     bullets.add(b);
   }
+
+  void delete() {
+    for (int i = bullets.size ()-1; i>=0; i--) 
+    {
+      Bullet b = bullets.get(i);
+      bullets.remove(b);
+    }
+  }
 }
 

@@ -8,17 +8,18 @@ MainMenu mainmenu;
 UI ui;
 int score;
 int lives;
+int gameTime;
 PFont font36;
 PFont font14;
+PFont font48;
 boolean isPlaying;
 void setup()
 {
   //size(displayWidth, displayHeight,P2D);
   size(800, 600, P2D);
-  lives = 3;
   font36 = loadFont("font36.vlw");
   font14 = loadFont("font14.vlw");
-  font48 = loadFont("");
+  font48 = loadFont("font48.vlw");
   mainmenu = new MainMenu();
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
@@ -34,11 +35,10 @@ void draw()
   smooth(8);
   imageMode(CENTER);
   noStroke();
-  //background(0);
 
-  //starF.lightSpeed();
   if (isPlaying)
   {
+    gameTime++;
     starF.show();
     bulletmanager.update();
     player.update();
@@ -58,7 +58,17 @@ void draw()
     mainmenu.display();
   }
 
-  if (lives<0) noLoop();
+  if (lives<0) isPlaying  = false;
+}
+
+void gameReset(){
+  lives = 0;
+  gameTime=0;
+  player.damageable=true;
+  enemymanager.delete();
+  bulletmanager.delete();
+  ui.bulletReset();
+  explosionmanager.delete();
 }
 
 void keyPressed(KeyEvent evt) {
