@@ -5,6 +5,7 @@ BulletManager bulletmanager;
 EnemyManager enemymanager;
 ExplosionManager explosionmanager;
 MainMenu mainmenu;
+ScoreManager scoremanager;
 UI ui;
 int score;
 int lives;
@@ -27,6 +28,7 @@ void setup()
   bulletmanager = new BulletManager();
   enemymanager = new EnemyManager();
   explosionmanager = new ExplosionManager();
+  scoremanager = new ScoreManager();
   ui = new UI();
 }
 
@@ -47,21 +49,23 @@ void draw()
     enemymanager.draw();
     explosionmanager.display();
     ui.display();
-  } 
-  else 
+  } else 
   {
 
-    
+
     starF.show();
     fill(0, 0, 0, 150);
     rect(0, 0, width, height);
     mainmenu.display();
   }
 
-  if (lives<0) isPlaying  = false;
+  if (lives<0) {
+    isPlaying  = false;
+    scoremanager.saveScore();
+  }
 }
 
-void gameReset(){
+void gameReset() {
   lives = 0;
   gameTime=0;
   player.damageable=true;
@@ -85,8 +89,7 @@ boolean rectRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
   // test for collision
   if (x1+w1/2 >= x2-w2/2 && x1-w1/2 <= x2+w2/2 && y1+h1/2 >= y2-h2/2 && y1-h1/2 <= y2+h2/2) {
     return true;    // if a hit, return true
-  } 
-  else {            // if not, return false
+  } else {            // if not, return false
     return false;
   }
 }

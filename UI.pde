@@ -43,7 +43,8 @@ class UI
   void bulletReset() {
     sBCount = 500;
     rnbBCount = 10;
-    score = 0;
   }
+
+
 }
 
