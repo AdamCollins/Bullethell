@@ -80,7 +80,7 @@ class Player
 
     if (kbd.holdingShift)
     {
-      if (frameCount%18==0)
+      if (frameCount%22==0)
       {
 
         Bullet b = new Bullet(x-15, y, 10, true);

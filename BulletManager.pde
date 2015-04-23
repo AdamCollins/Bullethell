@@ -30,7 +30,6 @@ class BulletManager
       {
         SecondEnemy s = enemymanager.secondenemy.get(k);
         if (rectRect((int)b.x, (int)b.y, 3, 11, (int)s.x, (int) s.y, 43, 47) && b.isFriendly) {
-          println("HIT");
           bullets.remove(i);
           explosionmanager.create(s.x, s.y);
           enemymanager.secondenemy.remove(k);

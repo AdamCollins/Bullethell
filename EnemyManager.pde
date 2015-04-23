@@ -20,11 +20,11 @@ class EnemyManager
 
   void create()
   {
-    if (frameCount%50==0 && gameTime <60*30+60*2) {
+    if (frameCount%50==0 && gameTime >60*30+60*2) {
       SecondEnemy s = new SecondEnemy();
       secondenemy.add(s);
     }
-    if (frameCount%20==0 && gameTime >60*30) {
+    if (frameCount%30==0 && gameTime <60*30) {
       Flappybird f = new Flappybird();
       flappybird.add(f);
     }

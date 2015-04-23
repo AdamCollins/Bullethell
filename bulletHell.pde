@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 Starfield starF;
 Keyboard kbd;
 Player player;
@@ -30,6 +33,8 @@ void setup()
   explosionmanager = new ExplosionManager();
   scoremanager = new ScoreManager();
   ui = new UI();
+  
+  scoremanager.readScores();
 }
 
 void draw()
@@ -57,6 +62,7 @@ void draw()
     fill(0, 0, 0, 150);
     rect(0, 0, width, height);
     mainmenu.display();
+    println(explosionmanager.explosions.size());
   }
 
   if (lives<0) {

@@ -1,7 +1,8 @@
 class ScoreManager
 {
 
-  PrintWriter scoreWriters;
+
+  String outFilename = "scores/scores.txt";
   ScoreManager()
   {
   }
@@ -9,17 +10,46 @@ class ScoreManager
 
   void saveScore() {
     if (score>0) {
-      scoreWriters =  createWriter("data/scores/" + score + ".txt");
-      scoreWriters.println(score);
-      scoreWriters.flush();
-      scoreWriters.close();
+      appendTextToFile(outFilename, str(score));
+
       score = 0;
     }
   }
 
-  void getScores() {
-    for(int i = 0; i<200*100; i+=100){
-      
+  void readScores() {
+    String scoreList[] = loadStrings("scores/scores.txt");
+    println("there are " + scoreList.length + " lines");
+    for (int i = 0; i < scoreList.length; i++) {
+      println(scoreList[i]);
+    }
+  }
+
+  void appendTextToFile(String filename, String text) {
+    File f = new File(dataPath(filename));
+    if (!f.exists()) {
+      createFile(f);
+    }
+    try {
+      PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(f, true)));
+      out.println(text);
+      out.close();
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Creates a new file including all subfolders
+   */
+  void createFile(File f) {
+    File parentDir = f.getParentFile();
+    try {
+      parentDir.mkdirs(); 
+      f.createNewFile();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
     }
   }
 }
