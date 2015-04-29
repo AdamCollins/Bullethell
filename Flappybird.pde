@@ -22,8 +22,8 @@ class Flappybird
 
 
   void move() {
-    vx = (player.x-x)/40;
-    vy = (player.y-30-y)/40+1;
+    vx = (player.x-x)/90;
+    vy = (player.y-30-y)/90+0.25;
       y+=vy;
       x+=vx;
   }

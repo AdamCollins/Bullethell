@@ -40,6 +40,8 @@ class Player
         damageable = true;
       }
     }
+    
+
   }
 
   void controls() {

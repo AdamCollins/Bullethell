@@ -5,6 +5,7 @@ class EnemyManager
   ArrayList<SecondEnemy> secondenemy;
   PImage[] flappybirdPI;
   PImage enemyss;
+  float dif;  //Difficulty 
   EnemyManager()
   {
     flappybird = new ArrayList<Flappybird>();
@@ -15,18 +16,25 @@ class EnemyManager
     flappybirdPI[1] = loadImage("flappyBird/flappybird_2.png");
 
     enemyss = loadImage("enemyss/enemyss.png");
+    dif=40;
   }
 
 
   void create()
   {
-    if (frameCount%50==0 && gameTime >60*30+60*2) {
-      SecondEnemy s = new SecondEnemy();
-      secondenemy.add(s);
+    if (frameCount%(int)dif==0) {
+      if (gameTime > 60*3 && gameTime < 60*30 || gameTime>60*60 && gameTime<60*90 || gameTime>60*120) {
+        SecondEnemy s = new SecondEnemy();
+        secondenemy.add(s);
+        if (dif>20)dif-=0.1;
+      }
     }
-    if (frameCount%30==0 && gameTime <60*30) {
-      Flappybird f = new Flappybird();
-      flappybird.add(f);
+    if (frameCount%(int)dif==0) {
+      if (gameTime >60*30 && gameTime<60*60 || gameTime>60*90) {
+        Flappybird f = new Flappybird();
+        flappybird.add(f);
+        if (dif>20)dif-=0.1;
+      }
     }
   }
 

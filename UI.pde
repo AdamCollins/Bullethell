@@ -29,7 +29,9 @@ class UI
 
     textFont(font36);
     textSize(36);
+    println(score);
     text(score, width-100, 50);
+    println(score);
 
 
     for (int i = 0; i<lives; i++) {
@@ -38,10 +40,18 @@ class UI
       image(player.spaceship[5], 30+i*40, height-100);
       popMatrix();
     }
+    
+    if(score%3000==0){
+      sBCount+=150;
+      rnbBCount+=5;
+      score+=100;
+    }
+    
+    
   }
 
   void bulletReset() {
-    sBCount = 500;
+    sBCount = 300;
     rnbBCount = 10;
   }
 

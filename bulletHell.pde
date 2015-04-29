@@ -62,7 +62,6 @@ void draw()
     fill(0, 0, 0, 150);
     rect(0, 0, width, height);
     mainmenu.display();
-    println(explosionmanager.explosions.size());
   }
 
   if (lives<0) {
@@ -72,12 +71,14 @@ void draw()
 }
 
 void gameReset() {
-  lives = 0;
+  lives = 3;
   gameTime=0;
+  score = 0;
   player.damageable=true;
   enemymanager.delete();
   bulletmanager.delete();
   ui.bulletReset();
+  println(score);
   explosionmanager.delete();
 }
 
