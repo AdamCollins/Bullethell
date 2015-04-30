@@ -12,7 +12,7 @@ ScoreManager scoremanager;
 UI ui;
 int score;
 int lives;
-int gameTime;
+int gameTime;    //Time game has been playing.
 PFont font36;
 PFont font14;
 PFont font48;
@@ -34,7 +34,7 @@ void setup()
   scoremanager = new ScoreManager();
   ui = new UI();
   
-  scoremanager.readScores();
+   
 }
 
 void draw()
@@ -43,7 +43,7 @@ void draw()
   imageMode(CENTER);
   noStroke();
 
-  if (isPlaying)
+  if (isPlaying) 
   {
     gameTime++;
     starF.show();
@@ -54,13 +54,12 @@ void draw()
     enemymanager.draw();
     explosionmanager.display();
     ui.display();
-  } else 
+  } 
+  else 
   {
 
 
     starF.show();
-    fill(0, 0, 0, 150);
-    rect(0, 0, width, height);
     mainmenu.display();
   }
 

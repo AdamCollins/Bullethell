@@ -5,6 +5,9 @@ class MainMenu
   }
 
   void display() {
+
+    fill(0, 0, 0, 150);
+    rect(0, 0, width, height); //Fades out starfield for main menu.
     playButton();
     highscoreButton();
   }
@@ -36,6 +39,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         //Show Highscore
+        scoremanager.readScores();
       }
     }
     fill(0, 0, 0, 150);

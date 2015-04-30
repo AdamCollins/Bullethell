@@ -5,7 +5,7 @@ class UI
 
   UI()
   {
-    sBCount = 500;
+    sBCount = 50;
     rnbBCount = 10;
   }
 
@@ -41,17 +41,24 @@ class UI
       popMatrix();
     }
     
-    if(score%3000==0){
-      sBCount+=150;
-      rnbBCount+=5;
+    if(score%3000==0 && score>0){
+      sBCount+=20;
+      rnbBCount+=3;
       score+=100;
+    }
+    
+    
+    if(score%20000==0 && lives < 3 && score>0){
+      lives++;
+      score+=100;
+       
     }
     
     
   }
 
   void bulletReset() {
-    sBCount = 300;
+    sBCount = 45;
     rnbBCount = 10;
   }
 

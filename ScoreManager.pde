@@ -18,9 +18,18 @@ class ScoreManager
 
   void readScores() {
     String scoreList[] = loadStrings("scores/scores.txt");
-    println("there are " + scoreList.length + " lines");
+    int[] sortedScores;
+    sortedScores = new int[scoreList.length];
     for (int i = 0; i < scoreList.length; i++) {
-      println(scoreList[i]);
+      //println(scoreList[i]);
+      sortedScores[i] = Integer.parseInt(scoreList[i]);
+    }
+    sortedScores = sort(sortedScores);
+    println("sorted");
+    //println(sortedScores);
+
+    for (int i = 0; i < scoreList.length; i++) {
+      println(sortedScores[i]);
     }
   }
 
