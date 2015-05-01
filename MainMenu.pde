@@ -1,15 +1,24 @@
 class MainMenu
 {
-
+  boolean displayScores;
   MainMenu() {
+    displayScores = false;
   }
 
   void display() {
 
     fill(0, 0, 0, 150);
     rect(0, 0, width, height); //Fades out starfield for main menu.
-    playButton();
-    highscoreButton();
+
+    if (!displayScores) {
+      playButton();
+      highscoreButton();
+    } else
+    {
+      backButton();
+      highscores();
+      
+    }
   }
 
   void playButton() {
@@ -39,7 +48,8 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         //Show Highscore
-        scoremanager.readScores();
+        displayScores = true;
+        //scoremanager.sortScores();
       }
     }
     fill(0, 0, 0, 150);
@@ -48,6 +58,39 @@ class MainMenu
     textSize(48);
     textFont(font48);
     text("Highscores", width/2-110, height/3+150);
+  }
+
+
+  void highscores() {
+    textSize(48);
+    textFont(font48);
+    int y = 140;
+    scoremanager.sortScores();
+    for(int i = scoremanager.sortedScores.length-1; i>scoremanager.sortedScores.length-8; i--){
+      int s = scoremanager.sortedScores[i];
+      text(i-25 +". " + s, width/2-105, y);
+      y+=48;
+      println(s);
+    }
+    
+    
+  }
+
+  void backButton() {
+    strokeWeight(3);
+    stroke(112, 148, 186);
+    if (mouseX>320 && mouseX<475 && mouseY>460 && mouseY<530) {
+      stroke(102, 111, 242);
+      if (mousePressed) {
+        displayScores = false;
+      }
+    }
+    fill(0, 0, 0, 150);
+    rect(width/2-width/10, height-140, width/5, 70);
+    fill(255);
+    textSize(48);
+    textFont(font48);
+    text("Back", width/2-55, height-90);
   }
 }
 

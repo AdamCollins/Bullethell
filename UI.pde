@@ -5,8 +5,8 @@ class UI
 
   UI()
   {
-    sBCount = 50;
-    rnbBCount = 10;
+    sBCount = 45;
+    rnbBCount = 5;
   }
 
   void display() {
@@ -29,9 +29,7 @@ class UI
 
     textFont(font36);
     textSize(36);
-    println(score);
     text(score, width-100, 50);
-    println(score);
 
 
     for (int i = 0; i<lives; i++) {
@@ -59,7 +57,7 @@ class UI
 
   void bulletReset() {
     sBCount = 45;
-    rnbBCount = 10;
+    rnbBCount = 5;
   }
 
 

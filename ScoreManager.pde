@@ -3,6 +3,7 @@ class ScoreManager
 
 
   String outFilename = "scores/scores.txt";
+  int[] sortedScores;
   ScoreManager()
   {
   }
@@ -11,27 +12,23 @@ class ScoreManager
   void saveScore() {
     if (score>0) {
       appendTextToFile(outFilename, str(score));
-
+      sortScores();
       score = 0;
     }
   }
 
-  void readScores() {
+  void sortScores() {
     String scoreList[] = loadStrings("scores/scores.txt");
-    int[] sortedScores;
+
     sortedScores = new int[scoreList.length];
     for (int i = 0; i < scoreList.length; i++) {
-      //println(scoreList[i]);
       sortedScores[i] = Integer.parseInt(scoreList[i]);
     }
     sortedScores = sort(sortedScores);
-    println("sorted");
-    //println(sortedScores);
-
-    for (int i = 0; i < scoreList.length; i++) {
-      println(sortedScores[i]);
-    }
   }
+  
+
+
 
   void appendTextToFile(String filename, String text) {
     File f = new File(dataPath(filename));
