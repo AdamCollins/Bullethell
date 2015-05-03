@@ -12,6 +12,7 @@ ScoreManager scoremanager;
 UI ui;
 int score;
 int lives;
+int level;
 int gameTime;    //Time game has been playing.
 PFont font36;
 PFont font14;
@@ -33,8 +34,6 @@ void setup()
   explosionmanager = new ExplosionManager();
   scoremanager = new ScoreManager();
   ui = new UI();
-  
-   
 }
 
 void draw()
@@ -43,41 +42,42 @@ void draw()
   imageMode(CENTER);
   noStroke();
 
-  if (isPlaying) 
+  if (isPlaying && !ui.paused) 
   {
     gameTime++;
     starF.show();
     bulletmanager.update();
     player.update();
-    player.controls();
     enemymanager.create();
     enemymanager.draw();
     explosionmanager.display();
-    ui.display();
-  } 
-  else 
-  {
+    
 
+    if (gameTime%1800==0) {
+      level++;
+    }
+  } 
+  else if (!ui.paused)
+  {
 
     starF.show();
     mainmenu.display();
+ 
   }
+  if(isPlaying)ui.display();
 
-  if (lives<0) {
-    isPlaying  = false;
-    scoremanager.saveScore();
-  }
+  
 }
 
 void gameReset() {
   lives = 3;
   gameTime=0;
+  level = 1;
   score = 0;
   player.damageable=true;
   enemymanager.delete();
   bulletmanager.delete();
   ui.bulletReset();
-  println(score);
   explosionmanager.delete();
 }
 
@@ -95,7 +95,8 @@ boolean rectRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
   // test for collision
   if (x1+w1/2 >= x2-w2/2 && x1-w1/2 <= x2+w2/2 && y1+h1/2 >= y2-h2/2 && y1-h1/2 <= y2+h2/2) {
     return true;    // if a hit, return true
-  } else {            // if not, return false
+  } 
+  else {            // if not, return false
     return false;
   }
 }

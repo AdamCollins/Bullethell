@@ -2,11 +2,12 @@ class UI
 {
   int sBCount;
   int rnbBCount;
-
+  boolean paused;
   UI()
   {
     sBCount = 45;
     rnbBCount = 5;
+    paused = false;
   }
 
   void display() {
@@ -38,28 +39,47 @@ class UI
       image(player.spaceship[5], 30+i*40, height-100);
       popMatrix();
     }
-    
-    if(score%3000==0 && score>0){
+
+    calculations();
+  }
+
+  void calculations() {
+    if (score%3000==0 && score>0) {
       sBCount+=20;
       rnbBCount+=3;
       score+=100;
     }
-    
-    
-    if(score%20000==0 && lives < 3 && score>0){
+
+
+    if (score%20000==0 && lives < 3 && score>0) {
       lives++;
       score+=100;
-       
     }
-    
-    
-  }
+    scoremanager.sortScores();
+    if (score>scoremanager.sortedScores[scoremanager.sortedScores.length-1]) {
+      fill(102, 111, 242);
+      textFont(font36);
+      textSize(24);
+      text("High Score!", width/2-100, 24);
+    }
 
+    if (isPlaying && kbd.holdingP) {
+      if (!paused) {
+        textFont(font36);
+        textSize(36);
+        text("PAUSED", width/2-100, height/2); 
+        paused = true;
+        delay(90);
+      } 
+      else {
+        paused = false;
+        delay(90);
+      }
+    }
+  }
   void bulletReset() {
     sBCount = 45;
     rnbBCount = 5;
   }
-
-
 }
 

@@ -62,14 +62,19 @@ class MainMenu
 
 
   void highscores() {
+    
+    text("High Scores", width/2-110, 60);
+    
     textSize(48);
     textFont(font48);
     int y = 140;
+    int n = 1;
     scoremanager.sortScores();
     for(int i = scoremanager.sortedScores.length-1; i>scoremanager.sortedScores.length-8; i--){
       int s = scoremanager.sortedScores[i];
-      text(i-25 +". " + s, width/2-105, y);
+      text(n +". " + s, width/2-105, y);
       y+=48;
+      n++;
       println(s);
     }
     

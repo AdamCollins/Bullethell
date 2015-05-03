@@ -14,7 +14,7 @@ class SecondEnemy
   {
     
     if (frameCount%50+(int)random(-5,5)==0 && y>0) {
-     Bullet b = new Bullet(x, y, -10, false);
+     Bullet b = new Bullet(x, y, -9, false);
      bulletmanager.addB(b);
      }
      y+=v;

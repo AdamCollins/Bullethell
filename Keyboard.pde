@@ -11,10 +11,10 @@ import java.awt.event.KeyEvent;
 
 class Keyboard {
   // used to track keyboard input
-  Boolean holdingUp, holdingDown, holdingRight, holdingLeft, holdingSpace, holdingShift, holdingA, holdingS;
+  Boolean holdingUp, holdingDown, holdingRight, holdingLeft, holdingSpace, holdingShift, holdingA, holdingS, holdingP;
 
   Keyboard() {
-    holdingUp=holdingDown=holdingRight=holdingLeft=holdingSpace=holdingShift=holdingA=holdingS=false;
+    holdingUp=holdingDown=holdingRight=holdingLeft=holdingSpace=holdingShift=holdingA=holdingS=holdingP=false;
   }
 
   /* The way that Processing, and many programming languages/environments, deals with keys is
@@ -50,6 +50,9 @@ class Keyboard {
     if (key == KeyEvent.VK_S) {
       holdingS = true;
     }
+    if (key == KeyEvent.VK_P) {
+      holdingP = true;
+    }
   }
   void releaseKey(int key) {
     if (key == KeyEvent.VK_UP) {
@@ -75,6 +78,9 @@ class Keyboard {
     }
     if (key == KeyEvent.VK_S) {
       holdingS = false;
+    }
+    if (key == KeyEvent.VK_P) {
+      holdingP = false;
     }
   }
 }

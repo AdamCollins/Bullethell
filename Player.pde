@@ -24,24 +24,16 @@ class Player
 
   void update()
   {
-      image(spaceship[costume-1], x, y);
+    image(spaceship[costume-1], x, y);
 
     x+=vx;
     y+=vy;
 
     vx*=0.96;
     vy*=0.96;
-
-    if (!damageable) {
-      safeTimer++;
-      if(safeTimer%5==0)image(spaceship[11],x,y);
-      if (safeTimer>60*2) {
-        safeTimer = 0;
-        damageable = true;
-      }
-    }
     
-
+    controls();
+    calculations();
   }
 
   void controls() {
@@ -50,7 +42,8 @@ class Player
     {
       vx=vx+a;
       if (costume<11 && frameCount%2==0)costume++;
-    } else {
+    } 
+    else {
       if (vx>=0)vx=vx-a;
       if (costume>6 && frameCount%2==0) costume--;
     }
@@ -59,7 +52,8 @@ class Player
     {
       if (costume>1 && frameCount%2==0) costume--;
       vx=vx-a;
-    } else {
+    } 
+    else {
       if (costume<6 && frameCount%2==0) costume++;
       if (vx>=0)vx=vx+a;
     }
@@ -67,14 +61,16 @@ class Player
     if (kbd.holdingUp && y>0-20)
     {
       vy=vy-a;
-    } else {
+    } 
+    else {
       if (vy>=0)vy=vy+a;
     }
 
     if (kbd.holdingDown && y<height+20)
     {
       vy=vy+a;
-    } else {
+    } 
+    else {
       if (vy>=0)vy=vy-a;
     }
 
@@ -107,6 +103,22 @@ class Player
         Bullet b = new Bullet(x, y, 12, true);
         bulletmanager.addB(b);
         ui.sBCount--;
+      }
+    }
+  }
+  void calculations() {
+
+    if (lives<0) {
+      isPlaying  = false;
+      scoremanager.saveScore();
+    }
+    
+    if (!damageable) {
+      safeTimer++;
+      if (safeTimer%5==0)image(spaceship[11], x, y);
+      if (safeTimer>60*2) {
+        safeTimer = 0;
+        damageable = true;
       }
     }
   }

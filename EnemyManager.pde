@@ -23,14 +23,14 @@ class EnemyManager
   void create()
   {
     if (frameCount%(int)dif==0) {
-      if (gameTime > 60*3 && gameTime < 60*30 || gameTime>60*60 && gameTime<60*90 || gameTime>60*120) {
+      if ((level+1)%2==0 || (level+1)%5==0) {
         SecondEnemy s = new SecondEnemy();
         secondenemy.add(s);
         if (dif>20)dif-=0.1;
       }
     }
     if (frameCount%(int)dif==0) {
-      if (gameTime >60*30 && gameTime<60*60 || gameTime>60*90) {
+      if ((level+1)%3==0 || (level+1)%5==0) {
         Flappybird f = new Flappybird();
         flappybird.add(f);
         if (dif>20)dif-=0.1;
