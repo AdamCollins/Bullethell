@@ -1,5 +1,8 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import ddf.minim.*;
+
+Minim minim;
 
 Starfield starF;
 Keyboard kbd;
@@ -9,6 +12,7 @@ EnemyManager enemymanager;
 ExplosionManager explosionmanager;
 MainMenu mainmenu;
 ScoreManager scoremanager;
+SFX sfx;
 UI ui;
 int score;
 int lives;
@@ -33,6 +37,8 @@ void setup()
   enemymanager = new EnemyManager();
   explosionmanager = new ExplosionManager();
   scoremanager = new ScoreManager();
+  minim = new Minim(this);
+  sfx = new SFX();
   ui = new UI();
 }
 
