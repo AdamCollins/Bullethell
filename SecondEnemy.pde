@@ -12,18 +12,17 @@ class SecondEnemy
 
   void move()
   {
-    
-    if (frameCount%50+(int)random(-5,5)==0 && y>0) {
-     Bullet b = new Bullet(x, y, -9, false);
-     bulletmanager.addB(b);
-     }
-     y+=v;
+    if (frameCount%50+(int)random(-5, 5)==0 && y>0) {
+      Bullet b = new Bullet(x, y, -9, false);
+      bulletmanager.addB(b);
+    }
+    y+=v;
   }
   void show()
   {
-      
+
     fill(250, 50, 12);
-    image(enemymanager.enemyss, x,y);
+    image(enemymanager.enemyss, x, y);
   }
 }
 

@@ -1,3 +1,21 @@
+/* Written by Adam Collins Alpha version.
+ *-----Special Features-----
+ * -Two types of enemies that spawn in waves.
+ * -Indicates when higscore is achived.
+ * -Highscores save and are sorted in order.
+ * -Menu and pause.
+ * -3 diffrent types of bullets with bullet counter.
+ * -Replenishes bullets and lives when certian scores are reached.
+ * -Enemies that follow player.
+ * -Invncible for 3 seconds after losing life. + invincible animation.
+ *
+ *-----Controls-----
+ *Basic bullets(unlimited): SHIFT
+ *Fast bullets: S
+ *Rainbow bullets: A
+ *Movement: Arrow keys
+ *Pause: P
+ */
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import ddf.minim.*;
@@ -12,7 +30,7 @@ EnemyManager enemymanager;
 ExplosionManager explosionmanager;
 MainMenu mainmenu;
 ScoreManager scoremanager;
-SFX sfx;
+SFX sfx; //Not working. WIP
 UI ui;
 int score;
 int lives;

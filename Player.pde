@@ -103,8 +103,7 @@ class Player
         Bullet b = new Bullet(x, y, 12, true);
         bulletmanager.addB(b);
         ui.sBCount--;
-        sfx.playLaser();
-        sfx.laser.rewind();
+        
       }
     }
   }
