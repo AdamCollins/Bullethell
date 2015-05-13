@@ -39,7 +39,13 @@ int gameTime;    //Time game has been playing.
 PFont font36;
 PFont font14;
 PFont font48;
-boolean isPlaying;
+int mode;
+
+final int MAINMENU = 0;
+final int PLAYING = 1;
+final int PAUSED = 2;
+
+
 void setup()
 {
   //size(displayWidth, displayHeight,P2D);
@@ -47,6 +53,9 @@ void setup()
   font36 = loadFont("font36.vlw");
   font14 = loadFont("font14.vlw");
   font48 = loadFont("font48.vlw");
+  smooth(8);
+  imageMode(CENTER);
+  mode = MAINMENU;
   mainmenu = new MainMenu();
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
@@ -62,35 +71,39 @@ void setup()
 
 void draw()
 {
-  smooth(8);
-  imageMode(CENTER);
+
   noStroke();
 
-  if (isPlaying && !ui.paused) 
+  if (mode == MAINMENU) 
   {
-    gameTime++;
-    starF.show();
-    bulletmanager.update();
-    player.update();
-    enemymanager.create();
-    enemymanager.draw();
-    explosionmanager.display();
-    
-
-    if (gameTime%1800==0) {
-      level++;
-    }
-  } 
-  else if (!ui.paused)
+    isMainMenu();
+  } else if (mode == PLAYING)
   {
-
-    starF.show();
-    mainmenu.display();
- 
+    isPlaying();
+  } else if (mode == PAUSED)
+  {
+    isPaused();
   }
-  if(isPlaying)ui.display();
+}
 
-  
+void isPlaying() {
+  gameTime++;
+  starF.show();
+  bulletmanager.update();
+  player.update();
+  enemymanager.create();
+  enemymanager.draw();
+  explosionmanager.display();
+  if (gameTime%1800==0) level++;
+  ui.display();
+}
+
+void isMainMenu() {
+  starF.show();
+  mainmenu.display();
+}
+void isPaused() {
+  ui.display();
 }
 
 void gameReset() {
@@ -119,8 +132,7 @@ boolean rectRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
   // test for collision
   if (x1+w1/2 >= x2-w2/2 && x1-w1/2 <= x2+w2/2 && y1+h1/2 >= y2-h2/2 && y1-h1/2 <= y2+h2/2) {
     return true;    // if a hit, return true
-  } 
-  else {            // if not, return false
+  } else {            // if not, return false
     return false;
   }
 }

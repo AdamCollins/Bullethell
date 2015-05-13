@@ -2,7 +2,6 @@ class UI
 {
   int sBCount;
   int rnbBCount;
-  boolean paused;
   UI()
   {
     sBCount = 45;
@@ -36,6 +35,7 @@ class UI
     for (int i = 0; i<lives; i++) {
       pushMatrix();
       scale(0.8, 0.8);
+      noStroke();
       image(player.spaceship[5], 30+i*40, height-100);
       popMatrix();
     }
@@ -63,19 +63,20 @@ class UI
       text("High Score!", width/2-100, 24);
     }
 
-    if (isPlaying && kbd.holdingP) {
-      if (!paused) {
+    if (kbd.holdingP) {
+      if (mode!=PAUSED) {
         textFont(font36);
         textSize(36);
-        text("PAUSED", width/2-100, height/2); 
-        paused = true;
+        text("PAUSED", width/2-100, height/2);
+        mode = PAUSED;
         delay(90);
-      } 
-      else {
-        paused = false;
+      } else{
+        mode = PLAYING;
         delay(90);
       }
     }
+
+
   }
   void bulletReset() {
     sBCount = 45;

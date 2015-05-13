@@ -1,10 +1,10 @@
-class SecondEnemy 
+class Enemy 
 {
 
   int costume;
   float x, y;
   float v;
-  SecondEnemy() {
+  Enemy() {
     x = random(50, width-50);
     y = -50;
     v =2;

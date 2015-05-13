@@ -26,13 +26,13 @@ class BulletManager
         player.y = height*2/3;
       }
 
-      for (int k = enemymanager.secondenemy.size ()-1; k>=0; k--) 
+      for (int k = enemymanager.enemy.size ()-1; k>=0; k--) 
       {
-        SecondEnemy s = enemymanager.secondenemy.get(k);
-        if (rectRect((int)b.x, (int)b.y, 3, 11, (int)s.x, (int) s.y, 43, 47) && b.isFriendly) {
+        Enemy e = enemymanager.enemy.get(k);
+        if (rectRect((int)b.x, (int)b.y, 3, 11, (int)e.x, (int) e.y, 43, 47) && b.isFriendly) {
           bullets.remove(i);
-          explosionmanager.create(s.x, s.y);
-          enemymanager.secondenemy.remove(k);
+          explosionmanager.create(e.x, e.y);
+          enemymanager.enemy.remove(k);
 
           score+=100;
 
@@ -40,13 +40,13 @@ class BulletManager
         }
       }
 
-      for (int j = enemymanager.flappybird.size ()-1; j>=0; j--) 
+      for (int j = enemymanager.enemyflappybird.size ()-1; j>=0; j--) 
       {
-        Flappybird f = enemymanager.flappybird.get(j);
+        EnemyFlappybird f = enemymanager.enemyflappybird.get(j);
         if (rectRect((int)b.x, (int)b.y, 3, 11, (int)f.x, (int) f.y, 32, 24) && b.isFriendly) {
           bullets.remove(i);
           explosionmanager.create(f.x, f.y);
-          enemymanager.flappybird.remove(j);
+          enemymanager.enemyflappybird.remove(j);
 
           score+=100;
 

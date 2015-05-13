@@ -1,15 +1,15 @@
 class EnemyManager
 {
 
-  ArrayList<Flappybird> flappybird;
-  ArrayList<SecondEnemy> secondenemy;
+  ArrayList<EnemyFlappybird> enemyflappybird;
+  ArrayList<Enemy> enemy;
   PImage[] flappybirdPI;
   PImage enemyss;
   float dif;  //Difficulty 
   EnemyManager()
   {
-    flappybird = new ArrayList<Flappybird>();
-    secondenemy = new ArrayList<SecondEnemy>();
+    enemyflappybird = new ArrayList<EnemyFlappybird>();
+    enemy = new ArrayList<Enemy>();
 
     flappybirdPI = new PImage[2];
     flappybirdPI[0] = loadImage("flappyBird/flappybird_1.png");
@@ -24,15 +24,15 @@ class EnemyManager
   {
     if (frameCount%(int)dif==0) {
       if ((level+1)%2==0 || (level+1)%5==0) {
-        SecondEnemy s = new SecondEnemy();
-        secondenemy.add(s);
+        Enemy e = new Enemy();
+        enemy.add(e);
         if (dif>20)dif-=0.1;
       }
     }
     if (frameCount%(int)dif==0) {
       if ((level+1)%3==0 || (level+1)%5==0) {
-        Flappybird f = new Flappybird();
-        flappybird.add(f);
+        EnemyFlappybird f = new EnemyFlappybird();
+        enemyflappybird.add(f);
         if (dif>20)dif-=0.1;
       }
     }
@@ -40,9 +40,9 @@ class EnemyManager
 
   void draw()
   {
-    for (int i = flappybird.size ()-1; i>=0; i--)
+    for (int i = enemyflappybird.size ()-1; i>=0; i--)
     {
-      Flappybird f = flappybird.get(i);
+      EnemyFlappybird f = enemyflappybird.get(i);
       f.move();
       f.show();
       if (rectRect((int)f.x, (int)f.y, 34, 24, (int)player.x, (int)player.y, 36, 41) && player.damageable) {
@@ -52,26 +52,26 @@ class EnemyManager
         player.y = height*2/3;
       }
     }
-    for (int i = secondenemy.size ()-1; i>=0; i--)
+    for (int i = enemy.size ()-1; i>=0; i--)
     {
-      SecondEnemy s = secondenemy.get(i);
-      s.move();
-      s.show();
+      Enemy e = enemy.get(i);
+      e.move();
+      e.show();
     }
   }
 
   void delete()
   {
-    for (int i = flappybird.size ()-1; i>=0; i--)
+    for (int i = enemyflappybird.size ()-1; i>=0; i--)
     {
-      Flappybird f = flappybird.get(i);
-      flappybird.remove(f);
+      EnemyFlappybird f = enemyflappybird.get(i);
+      enemyflappybird.remove(f);
     }
 
-    for (int i = secondenemy.size ()-1; i>=0; i--)
+    for (int i =  enemy.size ()-1; i>=0; i--)
     {
-      SecondEnemy s = secondenemy.get(i);
-      secondenemy.remove(s);
+      Enemy e = enemy.get(i);
+      enemy.remove(e);
     }
   }
 }

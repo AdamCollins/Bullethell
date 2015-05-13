@@ -1,16 +1,13 @@
-class Flappybird
+class EnemyFlappybird extends Enemy
 {
-
-  int costume;
-  float x, y;
+  
   float vx, vy;
-  Flappybird()
-  {
-
-    x = random(50, width-50);
-    y = -50;
-    costume = 1;
+  EnemyFlappybird() {
+    super();
   }
+
+
+
 
   void show()
   {
@@ -19,7 +16,6 @@ class Flappybird
     if (frameCount%10==0)costume++;
     if (costume>1) costume = 0;
   }
-
 
   void move() {
     vx = (player.x-x)/90;

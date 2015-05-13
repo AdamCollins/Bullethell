@@ -30,7 +30,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         gameReset();
-        isPlaying = true;
+        mode = PLAYING;
       }
     }
     fill(0, 0, 0, 150);

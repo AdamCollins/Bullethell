@@ -110,7 +110,7 @@ class Player
   void calculations() {
 
     if (lives<0) {
-      isPlaying  = false;
+      mode  = MAINMENU;
       scoremanager.saveScore();
     }
     
