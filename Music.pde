@@ -1,5 +1,9 @@
-class Music{
+class Music
+{
   
+  Music(){
+  
+  }
   
   
   

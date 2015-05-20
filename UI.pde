@@ -70,17 +70,14 @@ class UI
         text("PAUSED", width/2-100, height/2);
         mode = PAUSED;
         delay(90);
-      } else{
+      } else {
         mode = PLAYING;
         delay(90);
       }
     }
-
-
   }
   void bulletReset() {
-    sBCount = 45;
-    rnbBCount = 5;
+    sBCount = 65;
+    rnbBCount = 15;
   }
 }
-

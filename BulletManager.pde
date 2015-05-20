@@ -25,6 +25,10 @@ class BulletManager
         player.x = width/2;
         player.y = height*2/3;
       }
+      
+      if(rectRect((int)b.x, (int)b.y, 3, 11, (int)player.x, (int)player.y, 65,65) && !b.isFriendly && shield.inUse){
+          b.vy = 2;
+      }
 
       for (int k = enemymanager.enemy.size ()-1; k>=0; k--) 
       {

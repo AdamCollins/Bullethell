@@ -31,7 +31,7 @@ class Player
 
     vx*=0.96;
     vy*=0.96;
-    
+
     controls();
     calculations();
   }
@@ -42,8 +42,7 @@ class Player
     {
       vx=vx+a;
       if (costume<11 && frameCount%2==0)costume++;
-    } 
-    else {
+    } else {
       if (vx>=0)vx=vx-a;
       if (costume>6 && frameCount%2==0) costume--;
     }
@@ -52,8 +51,7 @@ class Player
     {
       if (costume>1 && frameCount%2==0) costume--;
       vx=vx-a;
-    } 
-    else {
+    } else {
       if (costume<6 && frameCount%2==0) costume++;
       if (vx>=0)vx=vx+a;
     }
@@ -61,16 +59,14 @@ class Player
     if (kbd.holdingUp && y>0-20)
     {
       vy=vy-a;
-    } 
-    else {
+    } else {
       if (vy>=0)vy=vy+a;
     }
 
     if (kbd.holdingDown && y<height+20)
     {
       vy=vy+a;
-    } 
-    else {
+    } else {
       if (vy>=0)vy=vy-a;
     }
 
@@ -96,6 +92,10 @@ class Player
       ui.rnbBCount--;
     }
 
+    if (kbd.holdingSpace) {
+      shield.inUse = true;
+    }
+
     if (kbd.holdingS) {
 
       if (frameCount%5==0 && ui.sBCount>0) {
@@ -103,7 +103,6 @@ class Player
         Bullet b = new Bullet(x, y, 12, true);
         bulletmanager.addB(b);
         ui.sBCount--;
-        
       }
     }
   }
@@ -111,9 +110,14 @@ class Player
 
     if (lives<0) {
       mode  = MAINMENU;
+      try {
+        scoremanager.writeToServer();
+      } 
+      catch(NullPointerException ex) {
+        scoremanager.saveScore();
+      }
       scoremanager.saveScore();
     }
-    
     if (!damageable) {
       safeTimer++;
       if (safeTimer%5==0)image(spaceship[11], x, y);

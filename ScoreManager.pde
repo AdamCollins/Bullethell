@@ -4,6 +4,7 @@ class ScoreManager
 
   String outFilename = "scores/scores.txt";
   int[] sortedScores;
+  
   ScoreManager()
   {
   }
@@ -15,6 +16,12 @@ class ScoreManager
       sortScores();
       score = 0;
     }
+  }
+  
+  void writeToServer(){
+    println("Sent:" + score);
+    String sc = "" + score;
+      c.write(sc);
   }
 
   void sortScores() {

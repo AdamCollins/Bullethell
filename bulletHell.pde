@@ -8,7 +8,7 @@
  * -Replenishes bullets and lives when certian scores are reached.
  * -Enemies that follow player.
  * -Invncible for 3 seconds after losing life. + invincible animation.
- *
+ *cats singing as they attack the ships 
  *-----Controls-----
  *Basic bullets(unlimited): SHIFT
  *Fast bullets: S
@@ -19,6 +19,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import ddf.minim.*;
+import processing.net.*;
 
 Minim minim;
 
@@ -30,8 +31,10 @@ EnemyManager enemymanager;
 ExplosionManager explosionmanager;
 MainMenu mainmenu;
 ScoreManager scoremanager;
+Shield shield;
 SFX sfx; //Not working. WIP
 UI ui;
+Client c;
 int score;
 int lives;
 int level;
@@ -57,9 +60,11 @@ void setup()
   imageMode(CENTER);
   mode = MAINMENU;
   mainmenu = new MainMenu();
+  c = new Client(this, "10.32.36.116", 12345);
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
   player = new Player();
+  shield = new Shield();
   bulletmanager = new BulletManager();
   enemymanager = new EnemyManager();
   explosionmanager = new ExplosionManager();
@@ -71,6 +76,7 @@ void setup()
 
 void draw()
 {
+  
 
   noStroke();
 
@@ -94,6 +100,7 @@ void isPlaying() {
   enemymanager.create();
   enemymanager.draw();
   explosionmanager.display();
+  //shield.update();
   if (gameTime%1800==0) level++;
   ui.display();
 }
