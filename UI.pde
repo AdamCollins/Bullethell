@@ -30,7 +30,8 @@ class UI
     textFont(font36);
     textSize(36);
     text(score, width-100, 50);
-
+    
+    rect(width-25,15,50,20);
 
     for (int i = 0; i<lives; i++) {
       pushMatrix();

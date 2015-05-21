@@ -19,9 +19,13 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import ddf.minim.*;
+import de.voidplus.soundcloud.*;
 import processing.net.*;
 
 Minim minim;
+SoundCloud soundcloud;
+AudioPlayer musicPlayer;
+AudioMetaData meta;
 
 Starfield starF;
 Keyboard kbd;
@@ -32,6 +36,7 @@ ExplosionManager explosionmanager;
 MainMenu mainmenu;
 ScoreManager scoremanager;
 Shield shield;
+Music music;
 SFX sfx; //Not working. WIP
 UI ui;
 Client c;
@@ -53,6 +58,10 @@ void setup()
 {
   //size(displayWidth, displayHeight,P2D);
   size(800, 600, P2D);
+  
+  background(0);
+  println("Loading", width/2, height/2);
+  
   font36 = loadFont("font36.vlw");
   font14 = loadFont("font14.vlw");
   font48 = loadFont("font48.vlw");
@@ -61,17 +70,24 @@ void setup()
   mode = MAINMENU;
   mainmenu = new MainMenu();
   c = new Client(this, "10.32.36.116", 12345);
+  println("Loading.", width/2, height/2);
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
+  println("Loading..", width/2, height/2);
   player = new Player();
   shield = new Shield();
   bulletmanager = new BulletManager();
+  println("Loading...", width/2, height/2);
   enemymanager = new EnemyManager();
   explosionmanager = new ExplosionManager();
   scoremanager = new ScoreManager();
   minim = new Minim(this);
+  println("Loading.", width/2, height/2);
   sfx = new SFX();
   ui = new UI();
+  music = new Music();
+  println("Loading..", width/2, height/2);
+  music.chooseSong();
 }
 
 void draw()
