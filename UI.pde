@@ -56,8 +56,8 @@ class UI
       lives++;
       score+=100;
     }
-    scoremanager.sortScores();
-    if (score>scoremanager.sortedScores[scoremanager.sortedScores.length-1]) {
+    scoremanager.sortLocalScores();
+    if (score>scoremanager.sortedLocalScores[scoremanager.sortedLocalScores.length-1]) {
       fill(102, 111, 242);
       textFont(font36);
       textSize(24);

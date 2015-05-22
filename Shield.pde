@@ -10,14 +10,14 @@ class Shield
 
   void update()
   {
-    show();
+    if(inUse)show();
     move();
   }
 
   void show()
   {
-    fill(0,200,255);
-    stroke(4);
+    noFill();
+    stroke(0,200,255);
     ellipse(x, y, 50, 50);
   }
 

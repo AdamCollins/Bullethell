@@ -1,8 +1,15 @@
 class MainMenu
 {
-  boolean displayScores;
+  int mode;
+  final int MAIN = 0;
+  final int HIGHSCORE = 1;
+
+  int hsMode;
+  final int LOCAL = 0;
+  final int GLOBAL = 1;
   MainMenu() {
-    displayScores = false;
+    mode = MAINMENU;
+    hsMode = LOCAL;
   }
 
   void display() {
@@ -10,14 +17,13 @@ class MainMenu
     fill(0, 0, 0, 150);
     rect(0, 0, width, height); //Fades out starfield for main menu.
 
-    if (!displayScores) {
+    if (this.mode == MAINMENU) {
       playButton();
       highscoreButton();
-    } else
+    } else if (this.mode == HIGHSCORE)
     {
       backButton();
       highscores();
-      
     }
   }
 
@@ -30,7 +36,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         gameReset();
-        mode = PLAYING;
+        this.mode = PLAYING;
       }
     }
     fill(0, 0, 0, 150);
@@ -48,8 +54,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         //Show Highscore
-        displayScores = true;
-        //scoremanager.sortScores();
+        this.mode = HIGHSCORE;
       }
     }
     fill(0, 0, 0, 150);
@@ -62,23 +67,56 @@ class MainMenu
 
 
   void highscores() {
-    
-    text("High Scores", width/2-110, 60);
-    
+    if (hsMode==LOCAL)localScores();
+    if (hsMode==GLOBAL)globalScores();
+  }
+
+  void localScores() {
+    textSize(36);
+    textFont(font36);
+    if (mouseX>340 && mouseX<460 && mouseY>65 && mouseY<100) { 
+      fill(102, 111, 242); 
+      if(mousePressed)hsMode = GLOBAL;
+    }
+    text("Local", width/2-40, 95);
     textSize(48);
     textFont(font48);
+    fill(255);
+    text("High Scores", width/2-110, 60);
+
     int y = 140;
     int n = 1;
-    scoremanager.sortScores();
-    for(int i = scoremanager.sortedScores.length-1; i>scoremanager.sortedScores.length-8; i--){
-      int s = scoremanager.sortedScores[i];
+    scoremanager.sortLocalScores();
+    for (int i = scoremanager.sortedLocalScores.length-1; i>scoremanager.sortedLocalScores.length-8; i--) {
+      int s = scoremanager.sortedLocalScores[i];
       text(n +". " + s, width/2-105, y);
       y+=48;
       n++;
-      println(s);
     }
-    
-    
+  }
+
+  void globalScores() {
+
+    textSize(36);
+    textFont(font36);
+    if (mouseX>340 && mouseX<460 && mouseY>65 && mouseY<100) { 
+      fill(102, 111, 242); 
+      if(mousePressed)hsMode = LOCAL;
+    }
+    text("Global", width/2-40, 95);
+    textSize(48);
+    textFont(font48);
+    fill(255);
+    text("High Scores", width/2-110, 60);
+    int y = 140;
+    int n = 1;
+    scoremanager.sortLocalScores();
+    for (int i = scoremanager.sortedLocalScores.length-1; i>scoremanager.sortedLocalScores.length-8; i--) {
+      int s = scoremanager.sortedLocalScores[i];
+      text(n +". " + s, width/2-105, y);
+      y+=48;
+      n++;
+    }
   }
 
   void backButton() {
@@ -87,7 +125,7 @@ class MainMenu
     if (mouseX>320 && mouseX<475 && mouseY>460 && mouseY<530) {
       stroke(102, 111, 242);
       if (mousePressed) {
-        displayScores = false;
+        this.mode = MAINMENU;
       }
     }
     fill(0, 0, 0, 150);
