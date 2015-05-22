@@ -37,6 +37,8 @@ class Player
   }
 
   void controls() {
+    
+    //if(kbd.holdingK) lives = -1;
 
     if (kbd.holdingRight )
     {
@@ -110,12 +112,7 @@ class Player
 
     if (lives<0) {
       mode  = MAINMENU;
-      try {
-        scoremanager.writeToServer();
-      } 
-      catch(NullPointerException ex) {
-        scoremanager.saveScore();
-      }
+      scoremanager.writeToServer();
       scoremanager.saveScore();
     }
     if (!damageable) {

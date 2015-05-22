@@ -13,7 +13,6 @@ class Music
 
   void playSong() {
     if (!musicPlayer.isPlaying()) chooseSong();
-    if()
   }
   void nextSong() {
     musicPlayer.close();

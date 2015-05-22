@@ -60,7 +60,7 @@ void setup()
   size(800, 600, P2D);
   
   background(0);
-  println("Loading", width/2, height/2);
+  println("Loading");
   
   font36 = loadFont("font36.vlw");
   font14 = loadFont("font14.vlw");
@@ -69,24 +69,26 @@ void setup()
   imageMode(CENTER);
   mode = MAINMENU;
   mainmenu = new MainMenu();
-  c = new Client(this, "10.32.36.116", 12345);
-  println("Loading.", width/2, height/2);
+  c = new Client(this, "192.168.1.107", 12345);
+  //c = new Client(this, "127.0.0.1", 12345);
+  //c.write("connection");
+  println("Loading.");
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
-  println("Loading..", width/2, height/2);
+  println("Loading..");
   player = new Player();
   shield = new Shield();
   bulletmanager = new BulletManager();
-  println("Loading...", width/2, height/2);
+  println("Loading...");
   enemymanager = new EnemyManager();
   explosionmanager = new ExplosionManager();
   scoremanager = new ScoreManager();
   minim = new Minim(this);
-  println("Loading.", width/2, height/2);
+  println("Loading.");
   sfx = new SFX();
   ui = new UI();
   music = new Music();
-  println("Loading..", width/2, height/2);
+  println("Loading..");
   music.chooseSong();
 }
 
@@ -113,10 +115,11 @@ void isPlaying() {
   starF.show();
   bulletmanager.update();
   player.update();
+  music.playSong();
   enemymanager.create();
   enemymanager.draw();
   explosionmanager.display();
-  //shield.update();
+  shield.update();
   if (gameTime%1800==0) level++;
   ui.display();
 }
@@ -124,13 +127,15 @@ void isPlaying() {
 void isMainMenu() {
   starF.show();
   mainmenu.display();
+  music.playSong();
 }
 void isPaused() {
   ui.display();
+  music.playSong();
 }
 
 void gameReset() {
-  lives = 3;
+  lives = 1;
   gameTime=0;
   level = 1;
   score = 0;

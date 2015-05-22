@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 
 class Keyboard {
   // used to track keyboard input
-  Boolean holdingUp, holdingDown, holdingRight, holdingLeft, holdingSpace, holdingShift, holdingA, holdingS, holdingP;
+  Boolean holdingUp, holdingDown, holdingRight, holdingLeft, holdingSpace, holdingShift, holdingA, holdingS, holdingP, holdingK;
 
   Keyboard() {
     holdingUp=holdingDown=holdingRight=holdingLeft=holdingSpace=holdingShift=holdingA=holdingS=holdingP=false;
@@ -26,6 +26,9 @@ class Keyboard {
   void pressKey(int key) {
     if (key == KeyEvent.VK_UP) {
       holdingUp = true;
+    }
+    if (key == KeyEvent.VK_K) {
+      holdingK = true;
     }
     if (key == KeyEvent.VK_DOWN) {
       holdingDown = true;
@@ -81,6 +84,9 @@ class Keyboard {
     }
     if (key == KeyEvent.VK_P) {
       holdingP = false;
+    }
+    if (key == KeyEvent.VK_K) {
+      holdingK = false;
     }
   }
 }
