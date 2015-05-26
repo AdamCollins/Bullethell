@@ -58,10 +58,10 @@ void setup()
 {
   //size(displayWidth, displayHeight,P2D);
   size(800, 600, P2D);
-  
+
   background(0);
   println("Loading");
-  
+
   font36 = loadFont("font36.vlw");
   font14 = loadFont("font14.vlw");
   font48 = loadFont("font48.vlw");
@@ -153,8 +153,14 @@ void keyReleased(KeyEvent evt) {
   kbd.releaseKey(evt.getKeyCode());
 }
 
-void mouseReleased(){
-  
+void mouseReleased() {
+  if(mainmenu.isTouchingLG){
+    if(mainmenu.hsMode == mainmenu.LOCAL){
+      mainmenu.hsMode = mainmenu.GLOBAL;
+    } else{
+      mainmenu.hsMode = mainmenu.LOCAL;
+    }
+  }
 }
 
 

@@ -1,12 +1,14 @@
 class MainMenu
 {
-  int mMode;
+  int subMode;
   final int MAIN = 0;
   final int HIGHSCORE = 1;
 
   int hsMode;
   final int LOCAL = 0;
   final int GLOBAL = 1;
+
+  boolean isTouchingLG;
   MainMenu() {
     mode = MAINMENU;
     hsMode = LOCAL;
@@ -17,10 +19,10 @@ class MainMenu
     fill(0, 0, 0, 150);
     rect(0, 0, width, height); //Fades out starfield for main menu.
 
-    if (mode == MAINMENU) {
+    if (subMode == MAIN) {
       playButton();
       highscoreButton();
-    } else if (mMode == HIGHSCORE)
+    } else if (subMode == HIGHSCORE)
     {
       backButton();
       highscores();
@@ -54,7 +56,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         //Show Highscore
-        mMode = HIGHSCORE;
+        subMode = HIGHSCORE;
       }
     }
     fill(0, 0, 0, 150);
@@ -76,7 +78,9 @@ class MainMenu
     textFont(font36);
     if (mouseX>340 && mouseX<460 && mouseY>65 && mouseY<100) { 
       fill(102, 111, 242); 
-      if(mousePressed)hsMode = GLOBAL;
+      isTouchingLG = true;
+    } else {
+      isTouchingLG = false;
     }
     text("Local", width/2-40, 95);
     textSize(48);
@@ -101,7 +105,9 @@ class MainMenu
     textFont(font36);
     if (mouseX>340 && mouseX<460 && mouseY>65 && mouseY<100) { 
       fill(102, 111, 242); 
-      if(mousePressed)hsMode = LOCAL;
+      isTouchingLG = true;
+    } else {
+      isTouchingLG = false;
     }
     text("Global", width/2-40, 95);
     textSize(48);
@@ -125,7 +131,7 @@ class MainMenu
     if (mouseX>320 && mouseX<475 && mouseY>460 && mouseY<530) {
       stroke(102, 111, 242);
       if (mousePressed) {
-        mode = MAINMENU;
+        subMode = MAIN;
       }
     }
     fill(0, 0, 0, 150);

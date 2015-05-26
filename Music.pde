@@ -27,7 +27,7 @@ class Music
       randString += c+"";
     }
 
-    ArrayList<Track> result = soundcloud.findTrack("chillstep" + " " + randString);
+    ArrayList<Track> result = soundcloud.findTrack("techno" + " " + randString);
     if (result!=null && result.size()>3) {
       println("Tracks: "+result.size());
 

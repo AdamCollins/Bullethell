@@ -111,7 +111,7 @@ class Player
   void calculations() {
 
     if (lives<0) {
-      mode  = MAINMENU;
+      //mode = HIGHSCORE;
       scoremanager.writeToServer();
       scoremanager.saveScore();
     }

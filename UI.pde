@@ -2,11 +2,16 @@ class UI
 {
   int sBCount;
   int rnbBCount;
+  PImage[] nextBtn;
   UI()
   {
+    nextBtn = new PImage[2];
     sBCount = 45;
     rnbBCount = 5;
     paused = false;
+    nextBtn[0] = loadImage("ui/nextSong_0.png");
+    nextBtn[1] = loadImage("ui/nextSong_1.png");
+    
   }
 
   void display() {
@@ -31,7 +36,7 @@ class UI
     textSize(36);
     text(score, width-100, 50);
     
-    rect(width-25,15,50,20);
+    image(nextBtn[0], width-50, 20);
 
     for (int i = 0; i<lives; i++) {
       pushMatrix();
