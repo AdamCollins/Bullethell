@@ -16,7 +16,7 @@ class Music
   }
   void nextSong() {
     musicPlayer.close();
-    chooseSong();
+    if(mode!=PAUSED)chooseSong();
   }
 
   void chooseSong() {
@@ -27,7 +27,7 @@ class Music
       randString += c+"";
     }
 
-    ArrayList<Track> result = soundcloud.findTrack("edm" + " " + randString);
+    ArrayList<Track> result = soundcloud.findTrack("chillstep" + " " + randString);
     if (result!=null && result.size()>3) {
       println("Tracks: "+result.size());
 

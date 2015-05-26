@@ -1,6 +1,6 @@
 class MainMenu
 {
-  int mode;
+  int mMode;
   final int MAIN = 0;
   final int HIGHSCORE = 1;
 
@@ -17,10 +17,10 @@ class MainMenu
     fill(0, 0, 0, 150);
     rect(0, 0, width, height); //Fades out starfield for main menu.
 
-    if (this.mode == MAINMENU) {
+    if (mode == MAINMENU) {
       playButton();
       highscoreButton();
-    } else if (this.mode == HIGHSCORE)
+    } else if (mMode == HIGHSCORE)
     {
       backButton();
       highscores();
@@ -36,7 +36,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         gameReset();
-        this.mode = PLAYING;
+        mode = PLAYING;
       }
     }
     fill(0, 0, 0, 150);
@@ -54,7 +54,7 @@ class MainMenu
       stroke(102, 111, 242);
       if (mousePressed) {
         //Show Highscore
-        this.mode = HIGHSCORE;
+        mMode = HIGHSCORE;
       }
     }
     fill(0, 0, 0, 150);
@@ -125,7 +125,7 @@ class MainMenu
     if (mouseX>320 && mouseX<475 && mouseY>460 && mouseY<530) {
       stroke(102, 111, 242);
       if (mousePressed) {
-        this.mode = MAINMENU;
+        mode = MAINMENU;
       }
     }
     fill(0, 0, 0, 150);

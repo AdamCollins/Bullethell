@@ -69,9 +69,9 @@ void setup()
   imageMode(CENTER);
   mode = MAINMENU;
   mainmenu = new MainMenu();
-  c = new Client(this, "10.32.38.28", 12345);
-  //c = new Client(this, "127.0.0.1", 12345);
-  c.write("connection");
+  //c = new Client(this, "10.32.38.28", 12345);
+  c = new Client(this, "127.0.0.1", 12345);
+  c.write("0");
   println("Loading.");
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
@@ -89,7 +89,7 @@ void setup()
   ui = new UI();
   music = new Music();
   println("Loading..");
-  //music.chooseSong();
+  music.chooseSong();
 }
 
 void draw()
@@ -114,7 +114,7 @@ void isPlaying() {
   starF.show();
   bulletmanager.update();
   player.update();
-  //music.playSong();
+  music.playSong();
   enemymanager.create();
   enemymanager.draw();
   explosionmanager.display();
@@ -126,15 +126,15 @@ void isPlaying() {
 void isMainMenu() {
   starF.show();
   mainmenu.display();
-  //music.playSong();
+  music.playSong();
 }
 void isPaused() {
   ui.display();
-  //music.playSong();
+  music.playSong();
 }
 
 void gameReset() {
-  lives = 1;
+  lives = 3;
   gameTime=0;
   level = 1;
   score = 0;

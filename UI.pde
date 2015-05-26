@@ -70,9 +70,11 @@ class UI
         textSize(36);
         text("PAUSED", width/2-100, height/2);
         mode = PAUSED;
+        musicPlayer.pause();
         delay(90);
       } else {
         mode = PLAYING;
+        //musicPlayer.play();
         delay(90);
       }
     }
