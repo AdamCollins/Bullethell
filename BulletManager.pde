@@ -18,8 +18,7 @@ class BulletManager
       println(1);
       b.move();
       println(2);
-      if (b.y<-50 || b.y>height+50) bullets.remove(i);
-      if (b.x<-50 || b.x>width+50) bullets.remove(i);
+      if (b.y<-50 || b.y>height+50 || b.x<-50 || b.x>width+50) bullets.remove(i);
       println(3);
       if (rectRect((int)b.x, (int)b.y, 3, 11, (int)player.x, (int) player.y, 11, 31) && player.damageable && !b.isFriendly) {
         lives--;
@@ -40,7 +39,6 @@ class BulletManager
           bullets.remove(i);
           explosionmanager.create(e.x, e.y);
           enemymanager.enemy.remove(k);
-
           score+=100;
 
           break;

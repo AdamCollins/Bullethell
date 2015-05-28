@@ -2,6 +2,7 @@ class UI
 {
   int sBCount;
   int rnbBCount;
+  int btnCost;
   PImage[] nextBtn;
   UI()
   {
@@ -36,7 +37,12 @@ class UI
     textSize(36);
     text(score, width-100, 50);
     
-    image(nextBtn[0], width-50, 20);
+    image(nextBtn[btnCost], width-40, 15);
+    if(mouseY<45){
+      btnCost = 1;
+    } else{
+      btnCost = 0;
+    }
 
     for (int i = 0; i<lives; i++) {
       pushMatrix();
@@ -75,7 +81,7 @@ class UI
         textSize(36);
         text("PAUSED", width/2-100, height/2);
         mode = PAUSED;
-        musicPlayer.pause();
+        //musicPlayer.pause();
         delay(90);
       } else {
         mode = PLAYING;
