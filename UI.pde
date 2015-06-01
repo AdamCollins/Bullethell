@@ -2,20 +2,16 @@ class UI
 {
   int sBCount;
   int rnbBCount;
-  int btnCost;
-  PImage[] nextBtn;
   UI()
   {
-    nextBtn = new PImage[2];
     sBCount = 45;
     rnbBCount = 5;
     paused = false;
-    nextBtn[0] = loadImage("ui/nextSong_0.png");
-    nextBtn[1] = loadImage("ui/nextSong_1.png");
     
   }
 
   void display() {
+    noStroke();
     fill(255);
 
 
@@ -37,12 +33,7 @@ class UI
     textSize(36);
     text(score, width-100, 50);
     
-    image(nextBtn[btnCost], width-40, 15);
-    if(mouseY<45){
-      btnCost = 1;
-    } else{
-      btnCost = 0;
-    }
+
 
     for (int i = 0; i<lives; i++) {
       pushMatrix();
@@ -82,11 +73,11 @@ class UI
         text("PAUSED", width/2-100, height/2);
         mode = PAUSED;
         //musicPlayer.pause();
-        delay(90);
+        delay(180);
       } else {
         mode = PLAYING;
         //musicPlayer.play();
-        delay(90);
+        delay(180);
       }
     }
   }

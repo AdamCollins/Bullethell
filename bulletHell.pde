@@ -161,6 +161,10 @@ void mouseReleased() {
       mainmenu.hsMode = mainmenu.LOCAL;
     }
   }
+  
+  if(music.isTouchingNext){
+    music.nextSong();
+  }
 }
 
 
