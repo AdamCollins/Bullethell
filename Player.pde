@@ -37,7 +37,7 @@ class Player
   }
 
   void controls() {
-    
+
     //if(kbd.holdingK) lives = -1;
 
     if (kbd.holdingRight )
@@ -95,7 +95,6 @@ class Player
     }
 
     if (kbd.holdingSpace) {
-      shield.inUse = true;
     }
 
     if (kbd.holdingS) {
@@ -118,7 +117,11 @@ class Player
     }
     if (!damageable) {
       safeTimer++;
-      if (safeTimer%5==0)image(spaceship[11], x, y);
+
+      println(safeTimer);
+      if (safeTimer%5==0) {
+        if (!shield.inUse)image(spaceship[11], x, y);
+      }
       if (safeTimer>60*2) {
         safeTimer = 0;
         damageable = true;

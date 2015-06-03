@@ -40,7 +40,11 @@ class Keyboard {
       holdingRight = true;
     }
     if (key == KeyEvent.VK_SPACE) {
-      holdingSpace = true;
+      if (shield.inUse) {
+        shield.inUse = false;
+      } else {
+        shield.inUse = true;
+      }
     }
 
     if (key == KeyEvent.VK_SHIFT) {

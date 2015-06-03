@@ -2,12 +2,13 @@ class UI
 {
   int sBCount;
   int rnbBCount;
+  float shieldTimer;
   UI()
   {
     sBCount = 45;
     rnbBCount = 5;
+    shieldTimer = 100;
     paused = false;
-    
   }
 
   void display() {
@@ -32,14 +33,14 @@ class UI
     textFont(font36);
     textSize(36);
     text(score, width-100, 50);
-    
+
 
 
     for (int i = 0; i<lives; i++) {
       pushMatrix();
       scale(0.8, 0.8);
       noStroke();
-      image(player.spaceship[5], 30+i*40, height-100);
+      image(player.spaceship[5], 30+i*40, height+100);
       popMatrix();
     }
 
@@ -86,3 +87,4 @@ class UI
     rnbBCount = 15;
   }
 }
+

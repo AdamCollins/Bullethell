@@ -21,7 +21,7 @@ class Music
 
   void nextButton() {
     image(nextBtn[btnCost], width-40, 15);
-    if (mouseY<45) {
+    if (mouseY<45 && mouseX>width-60) {
       btnCost = 1;
       isTouchingNext = true;
     } else {
@@ -47,7 +47,7 @@ class Music
       randString += c+"";
     }
 
-    ArrayList<Track> result = soundcloud.findTrack("techno" + " " + randString);
+    ArrayList<Track> result = soundcloud.findTrack("dance" + " " + randString);
     if (result!=null && result.size()>3) {
       println("Tracks: "+result.size());
 
