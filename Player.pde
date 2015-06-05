@@ -117,8 +117,6 @@ class Player
     }
     if (!damageable) {
       safeTimer++;
-
-      println(safeTimer);
       if (safeTimer%5==0) {
         if (!shield.inUse)image(spaceship[11], x, y);
       }

@@ -43,7 +43,10 @@ class EnemyManager
     for (int i = enemyflappybird.size ()-1; i>=0; i--)
     {
       EnemyFlappybird f = enemyflappybird.get(i);
-      f.move();
+      if (shield.inUse && dist(f.x, f.y, player.x,player.y)<60) {
+      } else{
+        f.move();
+      }
       f.show();
       if (rectRect((int)f.x, (int)f.y, 34, 24, (int)player.x, (int)player.y, 36, 41) && player.damageable) {
         lives--;

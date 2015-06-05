@@ -15,7 +15,7 @@ class Shield
       player.damageable = false;
       move();
       show();
-      //ui.shieldTimer--;
+      ui.shieldTimer--;
     } else {
       inUse = false;
     }
