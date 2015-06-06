@@ -71,7 +71,7 @@ void setup()
   mainmenu = new MainMenu();
   //c = new Client(this, "10.32.38.28", 12345);
   c = new Client(this, "127.0.0.1", 12345);
-  c.write("0");
+  c.write("connection");
   println("Loading.");
   starF = new Starfield(50); //Creates Starfeild. Args = num of stars.
   kbd = new Keyboard();
@@ -138,11 +138,15 @@ void gameReset() {
   gameTime=0;
   level = 1;
   score = 0;
+  player = new Player();
+  bulletmanager = new BulletManager();
   player.damageable=true;
-  enemymanager.delete();
-  bulletmanager.delete();
+  enemymanager = new EnemyManager();
+  explosionmanager = new ExplosionManager();
+ // enemymanager.delete();
+  //bulletmanager.delete();
   ui.bulletReset();
-  explosionmanager.delete();
+  //explosionmanager.delete();
 }
 
 void keyPressed(KeyEvent evt) {
@@ -154,15 +158,16 @@ void keyReleased(KeyEvent evt) {
 }
 
 void mouseReleased() {
-  if(mainmenu.isTouchingLG){
-    if(mainmenu.hsMode == mainmenu.LOCAL){
+  if (mainmenu.isTouchingLG) {
+    if (mainmenu.hsMode == mainmenu.LOCAL) {
+      scoremanager.sortGlobalScores();
       mainmenu.hsMode = mainmenu.GLOBAL;
-    } else{
+    } else {
       mainmenu.hsMode = mainmenu.LOCAL;
     }
   }
-  
-  if(music.isTouchingNext){
+
+  if (music.isTouchingNext) {
     music.nextSong();
   }
 }

@@ -112,6 +112,7 @@ class Player
     if (lives<0) {
       mode = MAINMENU;
       mainmenu.subMode = mainmenu.HIGHSCORE;
+      mainmenu.hsMode = mainmenu.LOCAL;
       scoremanager.writeToServer();
       scoremanager.saveScore();
     }

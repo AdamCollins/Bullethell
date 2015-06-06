@@ -47,7 +47,7 @@ class Music
       randString += c+"";
     }
 
-    ArrayList<Track> result = soundcloud.findTrack("dance" + " " + randString);
+    ArrayList<Track> result = soundcloud.findTrack("edm" + " " + randString);
     if (result!=null && result.size()>3) {
       println("Tracks: "+result.size());
 

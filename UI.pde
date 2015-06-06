@@ -5,7 +5,7 @@ class UI
   float shieldTimer;
   UI()
   {
-    sBCount = 45;
+    sBCount = 65;
     rnbBCount = 5;
     shieldTimer = 250;
     paused = false;
@@ -60,8 +60,9 @@ class UI
     if (score%3000==0 && score>0) {
       sBCount+=20;
       rnbBCount+=3;
+      score+=100;
     }
-    if (score%6000==0 && score>0) {
+    if (score%6100==0 && score>0) {
       shieldTimer = 250;
       score+=100;
     }

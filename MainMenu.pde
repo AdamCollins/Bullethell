@@ -7,7 +7,7 @@ class MainMenu
   int hsMode;
   final int LOCAL = 0;
   final int GLOBAL = 1;
-  
+
 
   boolean isTouchingLG;
   MainMenu() {
@@ -58,6 +58,7 @@ class MainMenu
       if (mousePressed) {
         //Show Highscore
         subMode = HIGHSCORE;
+        hsMode = LOCAL;
       }
     }
     fill(0, 0, 0, 150);
@@ -95,6 +96,12 @@ class MainMenu
     scoremanager.sortLocalScores();
     for (int i = scoremanager.sortedLocalScores.length-1; i>scoremanager.sortedLocalScores.length-8; i--) {
       int s = scoremanager.sortedLocalScores[i];
+      println("Score: " + score + "S: " + s);
+      if (s==score) {
+        fill(10, 255, 10);
+      } else{
+        fill(255);
+      }
       text(n +". " + s, width/2-105, y);
       y+=48;
       n++;
@@ -102,7 +109,6 @@ class MainMenu
   }
 
   void globalScores() {
-
     textSize(36);
     textFont(font36);
     if (mouseX>340 && mouseX<460 && mouseY>65 && mouseY<100) { 
@@ -117,6 +123,7 @@ class MainMenu
     fill(255);
     text("High Scores", width/2-110, 60);
     int y = 140;
+
     if (scoremanager.sortedGlobalScores==null) {      //If server isnt avalible.
       textSize(28);
       text( "No Connection", width/2-110, 140);
@@ -124,6 +131,22 @@ class MainMenu
       for (int i = 6; i>0; i--) {
         text( ". Loading", width/2-105, y);
         y+=48;
+      }
+    } else {
+      y = 140;
+      int n = 1;
+      textSize(28);
+      //
+      for (int i = 0; i<7; i++) {
+        int s = scoremanager.sortedGlobalScores[i];
+        if (s==score) {
+          fill(10, 255, 10);
+        } else {
+          fill(255);
+        }
+        text(n +". " + s, width/2-105, y);
+        y+=48;
+        n++;
       }
     }
 
