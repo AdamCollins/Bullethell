@@ -3,12 +3,13 @@ class Music
   ArrayList<String> previousSongs;
   boolean isTouchingNext;
   PImage[] nextBtn;
-  int btnCost;
+  int nBtnCost;
   Music() {
     
     nextBtn = new PImage[2];
-    nextBtn[0] = loadImage("ui/nextSong_2.png");
-    nextBtn[1] = loadImage("ui/nextSong_3.png");
+    nextBtn[0] = loadImage("ui/nextSong_0.png");
+    nextBtn[1] = loadImage("ui/nextSong_2.png");
+    
 
     // http://soundcloud.com/you/apps for APP_CLIENT_ID and APP_CLIENT_SECRET
     soundcloud = new SoundCloud("b621b2881156bfed30a37cca386e12ea", "64492c3dca2d0ef2f86de9346c0b89b1");
@@ -20,12 +21,12 @@ class Music
   }
 
   void nextButton() {
-    image(nextBtn[btnCost], width-40, 15);
+    image(nextBtn[nBtnCost], width-40, 15);
     if (mouseY<45 && mouseX>width-60) {
-      btnCost = 1;
+      nBtnCost = 1;
       isTouchingNext = true;
     } else {
-      btnCost = 0;
+      nBtnCost = 0;
       isTouchingNext = false;
     }
   }

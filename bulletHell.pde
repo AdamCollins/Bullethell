@@ -7,14 +7,21 @@
  * -3 diffrent types of bullets with bullet counter.
  * -Replenishes bullets and lives when certian scores are reached.
  * -Enemies that follow player.
+ * -Shield reflects bullets and saves player.
  * -Invncible for 3 seconds after losing life. + invincible animation.
- *cats singing as they attack the ships 
+ * -Server support.
+ *    -Connects and writes score to server.
+ *    -Game request scores and list them as highscore. (Under global highscore.)
+ *
+ * -After the game the highscore menu lights your score up in green if you achieved a highscore.
+ *
  *-----Controls-----
  *Basic bullets(unlimited): SHIFT
  *Fast bullets: S
  *Rainbow bullets: A
  *Movement: Arrow keys
  *Pause: P
+ *Spacebar: Toggles shield on and off.
  */
 import java.io.BufferedWriter;
 import java.io.FileWriter;

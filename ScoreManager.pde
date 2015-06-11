@@ -19,7 +19,6 @@ class ScoreManager
   }
 
   void writeToServer() {
-    println("Sent:" + score);
     String sc = "" + score;
     c.write(sc);
   }
@@ -39,7 +38,6 @@ class ScoreManager
     c.write("scorerequest");
     delay(120);
     if (c.available() > 0) {
-      //println("second");
       String input = c.readString();
       //input = input.substring(0, input.indexOf("\n")); // Only up to the newline
       sortedGlobalScores = int(split(input, ' ')); // Split values into an array
